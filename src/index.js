@@ -13,7 +13,7 @@ import connectDB from './data/connect-db';
 
     const server = new ApolloServer({ typeDefs, resolvers });
 
-    const { url } = await server.listen();
+    const { url } = await server.listen({ port: process.env.PORT || 4000 });
     // eslint-disable-next-line no-console
     console.log(`Server ready at ${url}`);
   } catch (err) {
