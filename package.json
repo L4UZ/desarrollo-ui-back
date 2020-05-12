@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "babel-node src/index.js",
+    "start": "node lib/index.js",
     "dev": "nodemon",
-    "build": "webpack"
+    "build": "babel src -d lib"
   },
   "author": "",
   "license": "ISC",
