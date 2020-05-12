@@ -8,12 +8,15 @@ require('dotenv').config();
 import connectDB from './data/connect-db';
 
 (async () => {
-  await connectDB();
+  try {
+    await connectDB();
 
-  const server = new ApolloServer({ typeDefs, resolvers });
+    const server = new ApolloServer({ typeDefs, resolvers });
 
-  server.listen().then(({ url }) => {
+    const { url } = await server.listen();
     // eslint-disable-next-line no-console
     console.log(`Server ready at ${url}`);
-  });
+  } catch (err) {
+    console.error(err);
+  }
 })();
