@@ -1,11 +1,11 @@
 import { ApolloServer } from 'apollo-server';
-import { typeDefs } from './typeDefs';
-import { resolvers } from './resolvers';
+import { typeDefs } from './_typeDefs';
+import { resolvers } from './_resolvers';
 
 require('dotenv').config();
 
 // eslint-disable-next-line import/first
-import connectDB from './data/connect-db';
+import connectDB from './_data/connect-db';
 
 // (async () => {
 //   try {

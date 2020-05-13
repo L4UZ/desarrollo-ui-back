@@ -2,8 +2,8 @@ import { hash, genSalt, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { pick } from 'lodash';
 
-import { User } from '../models';
-import { UserModel } from '../data';
+import { User } from '../_models';
+import { UserModel } from '../_data';
 
 export const usersResolvers = {
   Query: {
