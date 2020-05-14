@@ -1,4 +1,4 @@
-import { UserModel } from '../_data';
+import { UserModel } from '../data';
 
 export class User {
   static async all() {

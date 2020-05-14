@@ -2,8 +2,8 @@ import { hash, genSalt, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { pick } from 'lodash';
 
-import { User } from '../_models';
-import { UserModel } from '../_data';
+import { User } from '../models';
+import { UserModel } from '../data';
 
 export const usersResolvers = {
   Query: {
@@ -24,13 +24,12 @@ export const usersResolvers = {
       const userInDb = await UserModel.findOne({ email });
       console.log(userInDb);
       const isPasswordCorrect = await compare(password, userInDb.passwordHash);
-      if (isPasswordCorrect) {
-        const jwtPayload = { user: pick(createdUser, ['email', 'firstName', 'lastName']) };
-        const jwt = sign(jwtPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
-        return jwt;
-      } else {
-        return 'Wrong email/password';
-      }
+
+      if (!isPasswordCorrect) return 'Wrong email/password';
+
+      const jwtPayload = { user: pick(userInDb, ['email', 'firstName', 'lastName']) };
+      const jwt = sign(jwtPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
+      return jwt;
     },
   },
 };
