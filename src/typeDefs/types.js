@@ -9,5 +9,12 @@ export default gql`
 
   type Continent {
     name: String
+    regions: [Region]
+  }
+
+  type Region {
+    name: String
+    imageSrc: String
+    placeIds: [String]
   }
 `;
