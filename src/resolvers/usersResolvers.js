@@ -2,12 +2,11 @@ import { hash, genSalt, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { pick } from 'lodash';
 
-import { User } from '../models';
 import { UserModel } from '../data';
 
 export const usersResolvers = {
   Query: {
-    users: () => User.all(),
+    users: () => UserModel.all(),
   },
   Mutation: {
     signUp: async (_, { user }) => {
@@ -22,7 +21,6 @@ export const usersResolvers = {
     },
     signIn: async (_, { credentials: { email, password } }) => {
       const userInDb = await UserModel.findOne({ email });
-      console.log(userInDb);
       const isPasswordCorrect = await compare(password, userInDb.passwordHash);
 
       if (!isPasswordCorrect) return 'Wrong email/password';
