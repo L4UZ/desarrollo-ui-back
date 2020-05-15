@@ -8,13 +8,34 @@ export default gql`
   }
 
   type Continent {
-    name: String
-    regions: [Region]
+    id: ID!
+    name: String!
+    regions: [Region]!
   }
 
   type Region {
-    name: String
+    id: ID!
+    name: String!
     imageSrc: String
-    placeIds: [String]
+    places: [Place]
+  }
+
+  type Place {
+    id: ID!
+    name: String!
+    description: String
+    imagesSrc: [String]
+    activities: [Activity]
+    reviews: [Review]
+  }
+
+  type Activity {
+    name: String
+    price: Int
+  }
+
+  type Review {
+    comment: String
+    score: Int
   }
 `;

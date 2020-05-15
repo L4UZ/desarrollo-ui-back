@@ -5,9 +5,6 @@ import { pick } from 'lodash';
 import { UserModel } from '../data';
 
 export const usersResolvers = {
-  Query: {
-    users: () => UserModel.all(),
-  },
   Mutation: {
     signUp: async (_, { user }) => {
       const salt = await genSalt(10);
