@@ -2,7 +2,7 @@ import { RegionModel, PlaceModel } from '../data';
 
 export const regionsResolvers = {
   Query: {
-    region: (_, { id }) =>  RegionModel.findById(id);
+    region: (_, { id }) => RegionModel.findById(id),
   },
 
   Region: {
