@@ -16,6 +16,7 @@
     "no-undef": "error",
     "linebreak-style": "off",
     "import/prefer-default-export": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

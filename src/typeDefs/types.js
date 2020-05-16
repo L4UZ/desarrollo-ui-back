@@ -27,6 +27,7 @@ export default gql`
     imagesSrc: [String]!
     activities: [Activity]!
     reviews: [Review]!
+    overallScore: Float!
   }
 
   type Activity {
