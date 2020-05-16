@@ -26,8 +26,4 @@ export const signIn = async (email, password) => {
   return jwt;
 };
 
-export const authFilter = async token => {
-  const data = await verify(token, process.env.JWT_SECRET);
-  console.log(data);
-  return data;
-};
+export const authFilter = token => verify(token, process.env.JWT_SECRET);

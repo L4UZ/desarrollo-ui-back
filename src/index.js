@@ -1,7 +1,8 @@
 import '@babel/register';
 import '@babel/polyfill';
 
-import { ApolloServer } from 'apollo-server';
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
 
 import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
@@ -11,16 +12,18 @@ import connectDB from './data/connect-db';
 
 require('dotenv').config();
 
-connectDB();
+(async () => {
+  await connectDB();
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
-  cors: { allowedHeaders: '*', methods: '*', origin: '*' },
-});
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
 
-server.listen().then(({ url }) => {
+  const app = express();
+
+  server.applyMiddleware({ app, cors: { origin: '*', allowedHeaders: '*', methods: '*' } });
+
   // eslint-disable-next-line no-console
-  console.log(`Server ready at ${url}`);
-});
+  app.listen(process.env.PORT, () => console.log(`Server listening at port ${process.env.PORT}`));
+})();
