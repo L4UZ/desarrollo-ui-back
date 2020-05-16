@@ -20,6 +20,7 @@ export const mutation = gql`
   }
 
   input ReviewInput {
+    token: String!
     comment: String!
     score: Int!
     placeId: String!
