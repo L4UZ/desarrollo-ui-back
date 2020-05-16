@@ -6,8 +6,15 @@ export const reviewsResolvers = {
   Mutation: {
     addReview: async (_, { review: { token, comment, score, placeId } }) => {
       try {
-        await authFilter(token);
-        const [addedReview] = await ReviewModel.insertMany([{ comment, score }]);
+        const { user } = await authFilter(token);
+        const [addedReview] = await ReviewModel.insertMany([
+          {
+            comment,
+            score,
+            userEmail: user.email,
+            userFullName: `${user.firstName} ${user.lastName}`,
+          },
+        ]);
         await PlaceModel.findByIdAndUpdate(placeId, {
           $push: { reviewIds: addedReview._id },
         });

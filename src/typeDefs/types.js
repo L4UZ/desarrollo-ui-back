@@ -40,5 +40,7 @@ export default gql`
     id: ID!
     comment: String!
     score: Int!
+    userEmail: String
+    userFullName: String
   }
 `;
