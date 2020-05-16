@@ -6,6 +6,6 @@ export const continentsResolvers = {
   },
 
   Continent: {
-    regions: ({ regionIds }) => RegionModel.find({ _id: { $in: regionIds } }),
+    regions: ({ id }) => RegionModel.find({ continentId: id }),
   },
 };

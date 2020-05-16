@@ -6,6 +6,6 @@ export const regionsResolvers = {
   },
 
   Region: {
-    places: ({ placeIds }) => PlaceModel.find({ _id: { $in: placeIds } }),
+    places: ({ id }) => PlaceModel.find({ regionId: id }),
   },
 };

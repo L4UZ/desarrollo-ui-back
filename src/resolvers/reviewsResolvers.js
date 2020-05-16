@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { ReviewModel, PlaceModel } from '../data';
+import { ReviewModel } from '../data';
 import { authFilter } from '../logic/session';
 
 export const reviewsResolvers = {
@@ -9,15 +9,13 @@ export const reviewsResolvers = {
         const { user } = await authFilter(token);
         const [addedReview] = await ReviewModel.insertMany([
           {
+            placeId,
             comment,
             score,
             userEmail: user.email,
             userFullName: `${user.firstName} ${user.lastName}`,
           },
         ]);
-        await PlaceModel.findByIdAndUpdate(placeId, {
-          $push: { reviewIds: addedReview._id },
-        });
         return addedReview;
       } catch (err) {
         return err;

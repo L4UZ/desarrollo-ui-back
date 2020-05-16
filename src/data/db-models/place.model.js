@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
 
 export const placeSchema = new mongoose.Schema({
+  regionId: { type: String, index: true },
   name: String,
   description: String,
   imagesSrc: [String],
-  activityIds: [String],
-  reviewIds: [String],
 });
 
 export const PlaceModel = mongoose.model('Place', placeSchema);
