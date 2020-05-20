@@ -1,6 +1,7 @@
 import { genSalt, hash, compare } from 'bcryptjs';
 import { pick } from 'lodash';
 import { sign, verify } from 'jsonwebtoken';
+import { AuthenticationError } from 'apollo-server';
 
 import { UserModel } from '../data';
 
@@ -19,7 +20,7 @@ export const signIn = async (email, password) => {
   const userInDb = await UserModel.findOne({ email });
   const isPasswordCorrect = await compare(password, userInDb.passwordHash);
 
-  if (!isPasswordCorrect) return 'Wrong email/password';
+  if (!isPasswordCorrect) throw new AuthenticationError('Wrong email/password');
 
   const jwtPayload = { user: pick(userInDb, ['email', 'firstName', 'lastName']) };
   const jwt = sign(jwtPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
