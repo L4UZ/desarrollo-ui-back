@@ -18,6 +18,8 @@ export default gql`
     name: String!
     imageSrc: String!
     places: [Place]!
+    continentId: ID!
+    continentName: String!
   }
 
   type Place {

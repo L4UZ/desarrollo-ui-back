@@ -1,4 +1,4 @@
-import { RegionModel, PlaceModel } from '../data';
+import { RegionModel, PlaceModel, ContinentModel } from '../data';
 
 export const regionsResolvers = {
   Query: {
@@ -7,5 +7,6 @@ export const regionsResolvers = {
 
   Region: {
     places: ({ id }) => PlaceModel.find({ regionId: id }),
+    continentName: async ({ continentId }) => (await ContinentModel.findById(continentId)).name,
   },
 };
