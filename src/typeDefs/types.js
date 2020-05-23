@@ -25,7 +25,7 @@ export default gql`
   type Place {
     id: ID!
     name: String!
-    description: String!
+    description: String
     imagesSrc: [String]!
     activities: [Activity]!
     reviews: [Review]!
@@ -36,6 +36,7 @@ export default gql`
     id: ID!
     name: String!
     price: Int!
+    description: String
   }
 
   type Review {
