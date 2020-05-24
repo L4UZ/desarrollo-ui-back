@@ -6,7 +6,7 @@ export const regionsResolvers = {
   },
 
   Region: {
-    places: ({ id }) => PlaceModel.find({ regionId: id }),
+    places: ({ id }) => PlaceModel.find({ regionIds: id }),
     continentName: async ({ continentId }) => (await ContinentModel.findById(continentId)).name,
   },
 };
