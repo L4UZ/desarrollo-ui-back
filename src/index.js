@@ -5,7 +5,7 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 
-import { keepAlive } from './util/keepAlive';
+import { keepAliveHttps, keepAliveHttp } from './util/keepAlive';
 import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
 
@@ -14,7 +14,8 @@ import connectDB from './data/connect-db';
 
 require('dotenv').config();
 
-keepAlive();
+if (process.env.URL.match(/^https/)) keepAliveHttps();
+else keepAliveHttp();
 
 (async () => {
   await connectDB();
