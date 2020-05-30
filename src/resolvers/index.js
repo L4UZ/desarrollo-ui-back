@@ -3,6 +3,7 @@ import { continentsResolvers } from './continentsResolvers';
 import { regionsResolvers } from './regionsResolvers';
 import { placesResolvers } from './placesResolvers';
 import { reviewsResolvers } from './reviewsResolvers';
+import { tripsResolvers } from './tripsResolvers';
 
 export const resolvers = [
   usersResolvers,
@@ -10,4 +11,5 @@ export const resolvers = [
   regionsResolvers,
   placesResolvers,
   reviewsResolvers,
+  tripsResolvers,
 ];
