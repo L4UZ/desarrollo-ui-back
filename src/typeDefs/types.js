@@ -31,6 +31,7 @@ export default gql`
     activities: [Activity]!
     reviews: [Review]!
     overallScore: Float
+    distance: Float
   }
 
   type Activity {
