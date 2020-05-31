@@ -5,5 +5,7 @@ export const query = gql`
     continents: [Continent]!
     region(id: String!): Region!
     place(id: String!): Place!
+    trips(token: String!): [Trip]!
+    trip(id: String!): Trip!
   }
 `;

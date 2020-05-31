@@ -2,6 +2,7 @@ import { gql } from 'apollo-server';
 
 export default gql`
   type User {
+    ID: String!
     firstName: String!
     lastName: String!
     email: String!
@@ -45,5 +46,12 @@ export default gql`
     score: Int!
     userEmail: String
     userFullName: String
+  }
+
+  type Trip {
+    id: ID!
+    user: User!
+    name: String!
+    places: [Place]!
   }
 `;

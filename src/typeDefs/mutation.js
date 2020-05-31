@@ -5,6 +5,8 @@ export const mutation = gql`
     signUp(user: SignUpInput!): String!
     signIn(credentials: CredentialsInput!): String!
     addReview(review: ReviewInput!): Review!
+    addTrip(trip: TripInput!): Trip!
+    addPlaceToTrip(tripPlace: TripPlaceInput!): Trip!
   }
 
   input CredentialsInput {
@@ -23,6 +25,17 @@ export const mutation = gql`
     token: String!
     comment: String!
     score: Int!
+    placeId: String!
+  }
+
+  input TripInput {
+    token: String!
+    name: String!
+  }
+
+  input TripPlaceInput {
+    token: String!
+    tripId: String!
     placeId: String!
   }
 `;
