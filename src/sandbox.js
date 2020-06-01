@@ -4,7 +4,7 @@ import readline from 'readline-sync';
 
 const fs = require('fs');
 
-const rawdata = fs.readFileSync('C:\\Users\\diego\\Desktop\\db-with-locations.json');
+const rawdata = fs.readFileSync('./db-with-locations.json');
 const data = JSON.parse(rawdata);
 
 let res = '';
