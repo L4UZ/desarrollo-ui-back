@@ -32,6 +32,7 @@ export default gql`
     reviews: [Review]!
     overallScore: Float
     distance: Float
+    regionId: String
   }
 
   type Activity {
