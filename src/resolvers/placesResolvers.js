@@ -14,7 +14,6 @@ export const placesResolvers = {
               coordinates: [longitude, latitude],
             },
             distanceField: 'distance',
-            includeLocs: 'location',
             spherical: true,
           },
         },
