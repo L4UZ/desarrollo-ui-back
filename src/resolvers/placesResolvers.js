@@ -5,6 +5,18 @@ import { PlaceModel, ActivityModel, ReviewModel } from '../data';
 export const placesResolvers = {
   Query: {
     place: (_, { id }) => PlaceModel.findById(id),
+    placesByDistance: (_, { coords: { latitude, longitude } }) =>
+      PlaceModel.aggregate([
+        {
+          $geoNear: {
+            near: {
+              type: 'Point',
+              coordinates: [longitude, latitude],
+            },
+            distanceField: 'distance',
+          },
+        },
+      ]),
   },
 
   Place: {

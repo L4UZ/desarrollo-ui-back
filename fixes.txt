@@ -1,0 +1,13 @@
+id: 5ec7589b2bc88c5e50d29978, name: Islas Malvinas, -59.869240, -51.787951
+id: 5ecaf1ee2bc88c5e50d2998e, name: Rio de Janerio, -43.275130, -22.433396
+id: 5ecaf1ee2bc88c5e50d29991, name: Saint Louis, -16.489885, 16.021438
+id: 5ecaf1ee2bc88c5e50d2999e, name: Apia, -171.756232, -13.847926
+id: 5ecaf1ee2bc88c5e50d299a1, name: Lima, -77.090097, -12.023917
+id: 5ecbb4c72bc88c5e50d299a4, name: Washington DC, -77.039297, 38.916819
+id: 5ecc2478e6239cf8049230bf, name: Berry Islands, -77.843767, 25.733851
+id: 5ecc247e62dfe2fa27bbe38e, name: Bimini, -80.950921, 24.736355
+id: 5ecc27b71c5007c97c050f26, name: Barima-Waini, -59.941125, 7.600160
+id: 5ecc27bf726387fac4091f7a, name: Essequibo Islands-West Demerara, -58.446817, 6.639999
+id: 5ecc2b2e2bc88c5e50d299a9, name: Konohagakure, 139.719955, 35.728696
+
+
