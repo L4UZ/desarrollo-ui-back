@@ -1,13 +1,17 @@
+/* eslint-disable no-underscore-dangle */
 import { TripModel, UserModel, PlaceModel } from '../data';
 import { authFilter } from '../logic/session';
 
 export const tripsResolvers = {
   Trip: {
     user: ({ userId }) => UserModel.findById(userId),
-    places: async ({ placeIds }) => {
-      const queries = placeIds.map(placeId => PlaceModel.findById(placeId));
-      const places = await Promise.all(queries);
-      return places;
+    places: async ({ places }) => {
+      const queries = places.map(({ placeId }) => PlaceModel.findById(placeId));
+      return (await Promise.all(queries)).map(({ _doc: place }, index) => ({
+        ...place,
+        regionId: places[index].regionId,
+        id: place._id,
+      }));
     },
   },
 
@@ -34,12 +38,12 @@ export const tripsResolvers = {
         return err;
       }
     },
-    addPlaceToTrip: async (_, { tripPlace: { token, placeId, tripId } }) => {
+    addPlaceToTrip: async (_, { tripPlace: { token, regionId, placeId, tripId } }) => {
       try {
         await authFilter(token);
         const updatedTrip = await TripModel.findOneAndUpdate(
           { _id: tripId },
-          { $push: { placeIds: placeId } },
+          { $push: { places: { regionId, placeId } } },
           {
             returnOriginal: false,
           },

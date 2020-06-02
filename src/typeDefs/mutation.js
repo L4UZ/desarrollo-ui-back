@@ -36,6 +36,7 @@ export const mutation = gql`
   input TripPlaceInput {
     token: String!
     tripId: String!
+    regionId: String!
     placeId: String!
   }
 `;
