@@ -5,18 +5,20 @@ import { PlaceModel, ActivityModel, ReviewModel } from '../data';
 export const placesResolvers = {
   Query: {
     place: (_, { id }) => PlaceModel.findById(id),
-    placesByDistance: (_, { coords: { latitude, longitude } }) =>
-      PlaceModel.aggregate([
-        {
-          $geoNear: {
-            near: {
-              type: 'Point',
-              coordinates: [longitude, latitude],
+    placesByDistance: async (_, { coords: { latitude, longitude } }) =>
+      (
+        await PlaceModel.aggregate([
+          {
+            $geoNear: {
+              near: {
+                type: 'Point',
+                coordinates: [longitude, latitude],
+              },
+              distanceField: 'distance',
             },
-            distanceField: 'distance',
           },
-        },
-      ]),
+        ])
+      ).map(x => ({ ...x, id: x._id })),
   },
 
   Place: {
