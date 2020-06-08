@@ -18,7 +18,11 @@ export const placesResolvers = {
             },
           },
         ])
-      ).map(x => ({ ...x, id: x._id })),
+      ).map(place => ({
+        ...place,
+        distance: `${Math.round(place.distance / 1000).toLocaleString('en')} km`,
+        id: place._id,
+      })),
   },
 
   Place: {

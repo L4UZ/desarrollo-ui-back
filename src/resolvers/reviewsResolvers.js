@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { ReviewModel } from '../data';
 import { authFilter } from '../logic/session';
 

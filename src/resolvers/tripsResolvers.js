@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { TripModel, UserModel, PlaceModel } from '../data';
 import { authFilter } from '../logic/session';
 
