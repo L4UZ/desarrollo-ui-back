@@ -12,7 +12,7 @@ export const signUp = async user => {
   const [createdUser] = await UserModel.create([userToSave]);
 
   const jwtPayload = { user: pick(createdUser, ['id', 'email', 'firstName', 'lastName']) };
-  const jwt = sign(jwtPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
+  const jwt = sign(jwtPayload, process.env.JWT_SECRET);
   return jwt;
 };
 
@@ -23,7 +23,7 @@ export const signIn = async (email, password) => {
   if (!isPasswordCorrect) throw new AuthenticationError('Wrong email/password');
 
   const jwtPayload = { user: pick(userInDb, ['id', 'email', 'firstName', 'lastName']) };
-  const jwt = sign(jwtPayload, process.env.JWT_SECRET, { expiresIn: '1d' });
+  const jwt = sign(jwtPayload, process.env.JWT_SECRET);
   return jwt;
 };
 
