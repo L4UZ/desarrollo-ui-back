@@ -15,7 +15,13 @@ export const reviewsResolvers = {
             userFullName: `${user.firstName} ${user.lastName}`,
           },
         ]);
-        return addedReview;
+
+        const reviews = await ReviewModel.find({ placeId });
+
+        const overallScore =
+          reviews.reduce((acc, { score: reduceScore }) => acc + reduceScore, 0) / reviews.length;
+
+        return { ...addedReview._doc, id: addedReview._doc._id, overallScore };
       } catch (err) {
         return err;
       }

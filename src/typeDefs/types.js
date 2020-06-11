@@ -48,6 +48,7 @@ export default gql`
     score: Int!
     userEmail: String
     userFullName: String
+    overallScore: Float
   }
 
   type Trip {
