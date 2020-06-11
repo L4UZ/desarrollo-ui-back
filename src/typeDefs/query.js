@@ -8,6 +8,7 @@ export const query = gql`
     placesByDistance(coords: PlacesByDistanceInput!): [Place]!
     trips(token: String!): [Trip]!
     trip(id: String!): Trip!
+    me(token: String!): User
   }
 
   input PlacesByDistanceInput {
